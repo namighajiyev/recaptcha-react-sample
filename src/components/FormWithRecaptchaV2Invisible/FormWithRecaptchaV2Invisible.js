@@ -1,15 +1,14 @@
-import React, { useState, useCallback } from 'react';
-import { postPersonWithRecaptchV3 } from '../../helpers/api';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import React, { useState, useCallback, useRef } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
+import { postPersonWithRecaptchV2Invisible } from '../../helpers/api';
 
 
-const FormWithRecaptchaV3 = () => {
+const FormWithRecaptchaV2Invisible = () => {
   const [formValues, setFormValues] = useState({
     name: '',
     surname: ''
   });
-
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const recaptchaRef = useRef();
 
   const handleChange = useCallback((e) => {
     setFormValues({
@@ -20,22 +19,24 @@ const FormWithRecaptchaV3 = () => {
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-    console.log(formValues);
-    console.log(formValues);
-    const token = await executeRecaptcha("FormWithRecaptchaV3");
+    const token = await recaptchaRef.current.executeAsync();
     console.log(token);
-    postPersonWithRecaptchV3({ person: formValues, recaptchaToken: token })
+    if (!token) {
+      return;
+    }
+    console.log(formValues);
+    postPersonWithRecaptchV2Invisible({ person: formValues, recaptchaToken: token })
       .then(result => {
+        if (!!result.error) { throw result.error; }
         console.log("succes", result);
       })
       .catch(error => {
         console.log("error", error)
       })
-  }, [formValues, executeRecaptcha]);
-
+    recaptchaRef.current.reset();
+  }, [formValues]);
 
   return (
-
     <form>
       <div className="form-group">
         <label htmlFor="name">Name</label>
@@ -57,7 +58,12 @@ const FormWithRecaptchaV3 = () => {
           onChange={handleChange}
         />
       </div>
-
+      <ReCAPTCHA
+        size="invisible"
+        sitekey="6Lc4e7kZAAAAAFIQ0dBgVl75d4Gvdwr56y3IrPhn"
+        ref={recaptchaRef}
+        hl="az"
+      />
       <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
         Submit
       </button>
@@ -66,4 +72,4 @@ const FormWithRecaptchaV3 = () => {
   )
 };
 
-export default FormWithRecaptchaV3;
+export default FormWithRecaptchaV2Invisible;

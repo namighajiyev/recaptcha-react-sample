@@ -23,4 +23,7 @@ const handleResponse = async response => {
     }
 }
 
-export const postPersonWithRecaptchV3 = (data) => postJson("person/recaptcha-v3", data)
+export const postPersonWithRecaptchV3 = (data) => postJson("person/recaptcha-v3", data);
+export const postPersonWithRecaptchV2 = (data) => postJson("person/recaptcha-v2", data);
+
+export const postPersonWithRecaptchV2Invisible = (data) => postJson("person/recaptcha-v2-invisible", data);
