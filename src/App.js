@@ -10,7 +10,7 @@ function App() {
       <div className="container">
         <div className="row mt-5">
           <div className="col-sm">
-            <h5>Recaptcha V3 example</h5>
+            <h5>reCaptcha V3 example</h5>
           </div>
         </div>
         <div className="row">
@@ -20,7 +20,7 @@ function App() {
         </div>
         <div className="row mt-5">
           <div className="col-sm">
-            <h5>Recaptcha V2 Tickbox example</h5>
+            <h5>reCaptcha V2 Tickbox example</h5>
           </div>
         </div>
         <div className="row">
@@ -30,7 +30,7 @@ function App() {
         </div>
         <div className="row mt-5">
           <div className="col-sm">
-            <h5>Recaptcha V2 Invisible example</h5>
+            <h5>reCaptcha V2 Invisible example</h5>
           </div>
         </div>
         <div className="row">

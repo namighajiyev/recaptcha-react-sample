@@ -1,5 +1,8 @@
-# Sample app demonstrating how to use Google Recaptcha in a React app
+# Sample app demonstrating how to use Google reCaptcha in React
 ### Includes :
-- ReCaptcha V3 sample 
-- ReCaptcha V2 Tickbox sample
-- ReCaptcha V2 Invisible sample
+- reCaptcha V3 sample 
+- reCaptcha V2 Tickbox sample
+- reCaptcha V2 Invisible sample
+
+# Backend API
+### For backend API implementation in `ASP.NET Core` see [this repository](https://github.com/namik-hajiyev/ApiWithRecaptcha)
