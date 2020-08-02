@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GoogleReCaptchaProvider reCaptchaKey="6LfsWbkZAAAAAIQygQS5Yrg4enwrT4ccupoHz265">
+      <App />
+    </GoogleReCaptchaProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
